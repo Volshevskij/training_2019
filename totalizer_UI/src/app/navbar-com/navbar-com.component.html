@@ -1,0 +1,43 @@
+<body>
+  <ul>
+    <li>
+          <app-side-navigation></app-side-navigation>
+    </li>
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='[""]'>
+          Home
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/app-countries"]'>
+          Bets
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/app-events"]'>
+          Events
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/app-main-form-component"]'>
+          Users
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]' style="float:right">
+        <a [routerLink]='["/app-main-form-component"]'>
+          Register
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]' style="float:right">
+        <a [routerLink]='["/app-main-form-component"]'>
+          Got Account?
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]'>
+          <a [routerLink]='["/app-main-form-component"]'>
+            Info
+          </a>
+      </li>
+  </ul>
+</body>
+

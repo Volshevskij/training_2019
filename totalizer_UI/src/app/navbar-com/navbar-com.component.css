@@ -1,0 +1,27 @@
+ul {
+  font-size: 28px;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  text-shadow: 0 2px 3px rgb(0, 0, 0.003);
+  list-style-type: none;
+  margin: -10px -16px;
+  padding: 0;
+  overflow: hidden;
+  background-color: green;
+  background-image: linear-gradient(rgb(97, 96, 42),rgb(110, 240, 98));
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgb(27, 27, 15);
+}
