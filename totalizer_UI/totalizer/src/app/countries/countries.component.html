@@ -1,0 +1,24 @@
+ <form>
+ <div class = "element-form">
+    <div class="form-group">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1" style="font-size: 2rem;">Countries</label>
+        <button class="btn btn-default" style="background-color: chartreuse; position: fixed; top:151px; left: 230px">🔄</button>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option  *ngFor="let country of countries; let i = index" value="i">{{country.Id}}   {{country.Name}}</option>
+        </select>
+
+      </div>
+
+      <!-- <input type="text" name="example" list="exampleList">
+      <datalist id="exampleList">
+        <option *ngFor="let country of countries; let i = index" value="{{country.Id}}   {{country.Name}}"></option>
+      </datalist> -->
+      <button class="btn btn-default-a">Add</button>
+      <button class="btn btn-default-a" style="background-color: red">Delete</button>
+    </div>
+  </div>
+</form>
+<app-sport-types></app-sport-types>
+<app-teams></app-teams>
+

@@ -1,0 +1,41 @@
+span {
+  cursor: pointer;
+  font-size: 150%;
+}
+
+li {
+  float: left;
+  margin-left: 5px;
+}
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.options-form {
+  position: fixed;
+  display: inline-block;
+  background-color: rgb(5, 168, 92);
+  border-radius: 5px;
+  width: 100px;
+  left: 1025px;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  font-size: 1.6rem;
+  width: 207px;
+}
+
+.input-forms {
+  margin-left: 12px;
+}
+
+.checkbox-forms {
+  position: relative;
+  transform: scale(2);
+  margin-right: 8px;
+  top: -2px;
+}
+
+.form-control {
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
