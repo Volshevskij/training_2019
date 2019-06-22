@@ -1,0 +1,43 @@
+ <form>
+ <div class = "element-form">
+    <div class="form-group">
+      <div class="form-group">
+        <label for="labelForm" style="font-size: 2rem; text-shadow: 3px 4px 3px rgba(0, 0, 0, 0.3);">Countries</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option  *ngFor="let country of countries; let i = index" value="i">{{country.Id}}   {{country.Name}}</option>
+        </select>
+      </div>
+
+      <!-- <input type="text" name="example" list="exampleList">
+      <datalist id="exampleList">
+        <option *ngFor="let country of countries; let i = index" value="{{country.Id}}   {{country.Name}}"></option>
+      </datalist> -->
+      <button class="btn btn-default-a" type="button" (click)="toggleGreyground();toggleAddBox();">Add</button>
+      <button class="btn btn-default" type="button" (click)="toggleGreyground();toggleUpdateBox();" style="position: fixed; top:151px; left: 230px; font-size: 1.1rem; text-align: center">Update</button>
+      <button class="btn btn-default-a" type="button" (click)="toggleGreyground();toggleDeleteBox();" style="background-color: red">Delete</button>
+    </div>
+  </div>
+  <div class="background-handler" id="greyground">
+    <div class="add-box" id="addbox">
+        <label for="labelForm" style="font-size: 2rem;">Add country</label>
+        <input type="text" class="form-control" placeholder="Name:">
+        <button type="button" class="btn btn-default-a">Confirm</button>
+        <button type="button" (click)="toggleGreyground();toggleAddBox();" class="btn btn-default-a">Cancel</button>
+    </div>
+    <div class="update-box" id="updatebox">
+        <label for="labelForm" style="font-size: 2rem;">Update country</label>
+        <label for="labelForm" style="font-size: 2rem;">*NAME*</label>
+        <input type="text" class="form-control" placeholder="New Name:">
+        <button type="button" class="btn btn-default-a">Confirm</button>
+        <button type="button" (click)="toggleGreyground();toggleUpdateBox();" class="btn btn-default-a">Cancel</button>
+    </div>
+    <div class="delete-box" id="deletebox">
+        <label for="labelForm" style="font-size: 2rem;">Delete country *NAME*</label>
+        <button type="button" class="btn btn-default-a">Confirm</button>
+        <button type="button" (click)="toggleGreyground();toggleDeleteBox();" class="btn btn-default-a">Cancel</button>
+    </div>
+    </div>
+</form>
+
+
+

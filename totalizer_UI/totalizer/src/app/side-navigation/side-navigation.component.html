@@ -1,0 +1,11 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div id="mySidenav" class="sidenav" [routerLinkActive]='["link-active"]'>
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <a href="#">Users</a>
+    <a (click)="closeNav()" [routerLink]='["/app-countries"]'>DB Info</a>
+  </div>
+  <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+  </body>
