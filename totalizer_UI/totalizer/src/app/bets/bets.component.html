@@ -1,0 +1,111 @@
+<body>
+  <div class="wall">
+    <div class="row" *ngFor="let bet of bets; let i = index">
+     <div class="column">
+          <article class="wall-post wall-post-a">
+              <header class="wall-post-header">
+                New Bet! #{{bet.Id}}
+              </header>
+              <hr>
+              <div class="wall-post-content">
+                Holder: {{bet.Person.FirstName}} {{bet.Person.LastName}}
+                </div>
+              <div class="wall-post-content">
+                Event: {{bet.Event.Team1.Name}} vs {{bet.Event.Team2.Name}}
+              </div>
+              <div class="wall-post-content">
+              See results at: {{bet.Date | date: 'dd.MM.yyyy'}}
+              </div>
+              <hr>
+              <div class="wall-post-content">
+                On team: {{bet.Team.Name}}
+              </div>
+              <div class="wall-post-content">
+                Amount: {{bet.Amount}} Btc.
+              </div>
+              <div class="wall-post-content">
+                Coefficient: {{bet.Coefficient}}%
+              </div>
+              <div class="wall-post-content">
+                  Status: {{bet.Event.Status}}
+                </div>
+            </article>
+      </div>
+      <div class="column">
+          <div class="control">
+              <button (click)="getCurrentBet(i);openGreyground();openUpdateBox();" style="height: 110px;" value="{{i}}" id="updateButton{{i}}" class="btn btn-default">Update</button>
+              <button (click)="getCurrentBet(i);openGreyground();openDeleteBox();" value="{{i}}" style="position: relative; left: 320px; top: -74px; background-color: red" class="btn btn-default">Delete</button>
+            </div>
+      </div>
+    </div>
+   </div>
+
+    <div class="background-handler" id="greyground">
+        <div class="add-box" id="addbox">
+            <ul>
+                <li>
+                    <label for="labelForm" style="font-size: 2rem; margin-bottom: -20px;">Add new bet</label>
+                </li>
+                <li>
+                    <label style="font-size: 2rem;">Date</label>
+                </li>
+              </ul>
+            <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="date" class="form-control" id="addInputDate" placeholder="Date:">
+            <label>Coefficient</label>
+            <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="addInputCoefficient" placeholder="Coefficient:">
+            <label>Amount</label>
+            <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="addInputAmount" placeholder="Amount:">
+            <label>Event</label>
+            <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="addInputEvent" ng-model="mySel">
+                <option *ngFor="let event of events; let i = index" value="{{i}}">{{event.Team1.Name}} vs {{event.Team2.Name}}</option>
+              </select>
+              <label>Person</label>
+              <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="addInputPerson" ng-model="mySel">
+                  <option *ngFor="let person of persons; let i = index" value="{{i}}">{{person.FirstName}} {{person.MiddleName}} {{person.LastName}}</option>
+                </select>
+                <label>Bet team</label>
+                <select class="form-control" style="margin: 6px; margin-left: 4px; margin-right: 3px; width: 290px;" id="addInputTeam" ng-model="mySel">
+                  <option *ngFor="let team of teams; let i = index" value="{{i}}">{{team.Name}}</option>
+                </select>
+            <button type="button" (click)="addBet()" class="btn btn-default-a">Confirm</button>
+            <button type="button" (click)="closeGreyground();closeAddBox();refreshPage();" class="btn btn-default-a">Cancel</button>
+        </div>
+        <div class="update-box" id="updatebox">
+            <ul>
+                <li>
+                    <label for="labelForm" style="font-size: 2rem; margin-bottom: -20px;">Update bet</label>
+                </li>
+                <li>
+                    <label style="font-size: 2rem;">Date</label>
+                </li>
+              </ul>
+            <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="date" class="form-control" id="updateInputDate" placeholder="Date:">
+            <label>Coefficient</label>
+            <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="updateInputCoefficient" placeholder="Coefficient:">
+            <label>Amount</label>
+            <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="updateInputAmount" placeholder="Amount:">
+            <label>Event</label>
+            <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="updateInputEvent" ng-model="mySel">
+                <option *ngFor="let event of events; let i = index" value="{{i}}">{{event.Team1.Name}} vs {{event.Team2.Name}}</option>
+              </select>
+              <label>Person</label>
+              <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="updateInputPerson" ng-model="mySel">
+                  <option *ngFor="let person of persons; let i = index" value="{{i}}">{{person.FirstName}} {{person.MiddleName}} {{person.LastName}}</option>
+                </select>
+                <label>Bet team</label>
+                <select class="form-control" style="margin: 6px; margin-left: 4px; margin-right: 3px; width: 290px;" id="updateInputTeam" ng-model="mySel">
+                  <option value="0">{{this.bets[this.betTempId].Event.Team1.Name}}</option>
+                  <option value="1">{{this.bets[this.betTempId].Event.Team2.Name}}</option>
+                </select>
+            <button type="button" (click)="updateBet();closeUpdateBox();closeGreyground();" class="btn btn-default-a">Confirm</button>
+            <button type="button" (click)="closeGreyground();closeUpdateBox();" class="btn btn-default-a">Cancel</button>
+        </div>
+        <div class="delete-box" id="deletebox">
+            <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Delete bet #{{bets[this.betTempId].Id}}</label>
+            <button type="button" (click)="deleteBet();closeGreyground();closeDeleteBox();refreshPage();" class="btn btn-default-a">Confirm</button>
+            <button type="button" (click)="closeGreyground();closeDeleteBox();" class="btn btn-default-a">Cancel</button>
+        </div>
+     </div>
+     <button (click)="openGreyground();openAddBox();" style="position:fixed; top:100px; left: 100px;" id="addButton" class="btn btn-default">Add bet</button>
+     <span (click)="searchInfo()" style="z-index: 0" class="magnifier">🔍</span>
+    </body>

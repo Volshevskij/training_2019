@@ -1,0 +1,11 @@
+/Totalizer/packages
+/Totalizer/Models/bin
+/Totalizer/Models/obj
+/Totalizer/BusinessLogickLayer/bin
+/Totalizer/BusinessLogickLayer/obj
+/Totalizer/DataAccessLayer/bin
+/Totalizer/DataAccessLayer/obj
+/Totalizer/DI/bin
+/Totalizer/DI/obj
+/Totalizer/Totalizer/bin
+/Totalizer/Totalizer/obj
