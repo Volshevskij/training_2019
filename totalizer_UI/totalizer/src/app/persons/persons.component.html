@@ -1,0 +1,116 @@
+<body>
+  <div class="wall">
+    <div class="row" *ngFor="let person of persons; let i = index">
+     <div class="column">
+          <article class="wall-post wall-post-a">
+              <header class="wall-post-header">
+                New user!  {{person.LastName}}
+              </header>
+              <hr>
+              <div class="wall-post-content">
+                First name: {{person.FirstName}}
+                </div>
+              <div class="wall-post-content">
+                Middle name: {{person.MiddleName}}
+              </div>
+              <div class="wall-post-content">
+                Last name: {{person.LastName}}
+              </div>
+              <div class="wall-post-content">
+                Phone: {{person.Phone}}
+              </div>
+              <div class="wall-post-content">
+                Email: {{person.Email}}
+              </div>
+            </article>
+      </div>
+      <div class="column">
+          <div class="control">
+              <button (click)="getCurrentPerson(i);openGreyground();openUpdateBox();" style="height: 110px;" value="{{i}}" id="updateButton{{i}}" class="btn btn-default">Update</button>
+              <button (click)="getCurrentPerson(i);openGreyground();openDeleteBox();" value="{{i}}" style="position: relative; left: 320px; top: -74px; background-color: red" class="btn btn-default">Delete</button>
+            </div>
+      </div>
+    </div>
+   </div>
+
+    <div class="background-handler" id="greyground">
+        <div class="add-box" id="addbox">
+            <ul>
+                <li>
+                    <label for="labelForm" style="font-size: 2rem; margin-bottom: -20px;">Add new user</label>
+                </li>
+                <li>
+
+                </li>
+              </ul>
+            <div class="column-box">
+                <label style="font-size: 2rem;">First name</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="addInputFirstName" placeholder="First name:">
+                <label>Middle name</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="addInputMiddleName" placeholder="Middle name:">
+                <label>Last name</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="addInputLastName" placeholder="Last name:">
+                <label>Email</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="addInputEmail" placeholder="Email:">
+                <button type="button" (click)="addPerson()" class="btn btn-default-a">Confirm</button>
+              </div>
+
+                <div class="column-box">
+                <label>Phone</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="addInputPhone" placeholder="Phone:">
+                <label>Role</label>
+                <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="addInputRole" ng-model="mySel">
+                  <option *ngFor="let role of roles; let i = index" value="{{i}}">{{role.Name}}</option>
+                </select>
+                <label>Login</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="addInputLogin" placeholder="Login:">
+                <label>Password</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="addInputPassword" placeholder="Password:">
+                <button type="button" style="float: right;" (click)="closeGreyground();closeAddBox();refreshPage();" class="btn btn-default-a">Cancel</button>
+              </div>
+
+
+        </div>
+        <div class="update-box" id="updatebox">
+            <ul>
+                <li>
+                    <label for="labelForm" style="font-size: 2rem; margin-bottom: -20px;">Update user {{this.persons[this.tempId].LastName}}</label>
+                </li>
+                <li>
+
+                </li>
+              </ul>
+            <div class="column-box">
+                <label style="font-size: 2rem;">First name</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="updateInputFirstName" placeholder="First name:">
+                <label>Middle name</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="updateInputMiddleName" placeholder="Middle name:">
+                <label>Last name</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="updateInputLastName" placeholder="Last name:">
+                <label>Email</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="updateInputEmail" placeholder="Email:">
+                <button type="button" (click)="updatePerson()" class="btn btn-default-a">Confirm</button>
+              </div>
+
+                <div class="column-box">
+                <label>Phone</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="updateInputPhone" placeholder="Phone:">
+                <label>Role</label>
+                <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="updateInputRole" ng-model="mySel">
+                  <option *ngFor="let role of roles; let i = index" value="{{i}}">{{role.Name}}</option>
+                </select>
+                <label>Login</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="updateInputLogin" placeholder="Login:">
+                <label>Password</label>
+                <input style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="text" class="form-control" id="updateInputPassword" placeholder="Password:">
+                <button type="button" style="float: right;" (click)="closeGreyground();closeUpdateBox();" class="btn btn-default-a">Cancel</button>
+              </div>
+     </div>
+     <div class="delete-box" id="deletebox">
+      <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Delete user {{this.persons[this.tempId].LastName}}</label>
+      <button type="button" (click)="deletePerson();closeGreyground();closeDeleteBox();refreshPage();" class="btn btn-default-a">Confirm</button>
+      <button type="button" (click)="closeGreyground();closeDeleteBox();" class="btn btn-default-a">Cancel</button>
+  </div>
+    </div>
+     <button (click)="openGreyground();openAddBox();" style="position:fixed; top:100px; left: 100px;" id="addButton" class="btn btn-default">Add user</button>
+    </body>

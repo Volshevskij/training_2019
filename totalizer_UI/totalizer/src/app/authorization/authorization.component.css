@@ -1,0 +1,39 @@
+.form-control {
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  margin-top: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  width: 700px;
+  height: 90px;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.box {
+  position: fixed;
+  left: 330px;
+  top: 120px;
+  display: block;
+  background-color: white;
+  border-color: black;
+  border-radius: 5px;
+}
+
+.btn-default {
+  background-image: linear-gradient(blue,rgb(98, 98, 238));
+  margin-left: 5px;
+  /* margin-top: 5px; */
+  margin-bottom: 5px;
+  width: 707px;
+  height: 60px;
+  font-size: 2rem;
+  float: left;
+  border-radius: 6px;
+  color: white;
+  text-shadow: 0 2px 3px rgb(0, 0, 0.003);
+  text-align: center;
+  position: fixed;
+  top: 500px;
+  left: 325px;
+}

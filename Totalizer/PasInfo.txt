@@ -1,0 +1,10 @@
+{
+    "Email": "debd2@gmail.com",
+    "Password": "Belarus1]",
+    "ConfirmPassword": "Belarus1]"
+}
+{
+    "Email": "debd@gmail.com",
+    "Password": "Belarus1]",
+    "ConfirmPassword": "Belarus1]"
+}
