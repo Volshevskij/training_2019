@@ -1,0 +1,54 @@
+<body>
+  <ul>
+    <li>
+      <app-side-navigation></app-side-navigation>
+    </li>
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='[""]'>
+          Home
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]' class="dropdown">
+        <a [routerLink]='["/app-bet-box"]' class="dropbtn">
+          Bets
+          </a>
+          <div class="dropdown-content" style="width: 81px;">
+              <a [routerLink]='["/app-my-bets-box"]'>My bets</a>
+          </div>
+      </li>
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/app-event-box"]'>
+          Events
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]' class="dropdown">
+        <a [routerLink]='["/app-persons"]' class="dropbtn">
+          Users
+        </a>
+        <div class="dropdown-content">
+            <a [routerLink]='["/app-my-profile"]'>My account</a>
+        </div>
+      </li>
+      <li [routerLinkActive]='["link-active"]' style="float:right; position: relative; left: -20px">
+        <a [routerLink]='["/app-registration"]'>
+          Register
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]' style="float:right;position: relative; left: -20px">
+        <a [routerLink]='["/app-authorization"]'>
+          Got Account?
+        </a>
+      </li>
+      <li [routerLinkActive]='["link-active"]' style="float:right;position: relative; left: -20px">
+          <a [routerLink]='["/app-authorization"]' (click)="Logout();">
+            Logout
+          </a>
+        </li>
+      <li [routerLinkActive]='["link-active"]'>
+          <a [routerLink]='["/app-main-form-component"]'>
+            Info
+          </a>
+      </li>
+  </ul>
+  <span (click)="bringWindowUp()">🔺</span>
+</body>

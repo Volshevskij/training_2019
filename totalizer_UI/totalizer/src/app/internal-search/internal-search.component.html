@@ -1,0 +1,27 @@
+<div class="box-plaseholder">
+  <ul>
+    <li>
+      <input type="date" class="form-control" id="search-holder-date" placeholder="Search:">
+      <select class="form-control" id="search-holder-sportTypes">
+        <option *ngFor="let sportType of sportTypes; let i = index" value="{{sportType.Id}}">{{sportType.Name}}</option>
+      </select>
+      <select class="form-control" id="search-holder-status">
+        <option value="Preparation">Preparation</option>
+        <option value="In progress">In progress</option>
+        <option value="Finished">Finished</option>
+      </select>
+    </li>
+    <li>
+        <span class="gear-span-el" (click)="toggleForm()">&#9881;</span>
+    </li>
+  </ul>
+</div>
+<div class = "options-form" id="options">
+  <form class="checkbox input-forms" ngForm="form">
+      <input type="radio" checked="true" (click)="disableSportTypeSearch();disableStatusSearch();enableDateSearch();" class="checkbox-forms" name="search-options" id ="1" value="1"><label for="1">Date</label><br>
+      <input type="radio" (click)="disableDateSearch();disableStatusSearch();enableSportTypeSearch();" class="checkbox-forms" name="search-options" id ="2" value="2" [checked]="sportCheck"><label for="2">Sport type</label><br>
+      <input type="radio" (click)="disableSportTypeSearch();disableDateSearch();enableStatusSearch();" class="checkbox-forms" name="search-options" id ="3" value="3" [checked]="statusCheck"><label for="3">Status</label><br>
+  </form>
+</div>
+
+

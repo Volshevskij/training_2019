@@ -1,0 +1,35 @@
+ <form>
+ <div class = "element-form">
+    <div class="form-group">
+      <div class="form-group">
+        <label for="labelForm" style="font-size: 2rem; text-shadow: 3px 4px 3px rgba(0, 0, 0, 0.3);">Countries</label>
+        <select class="form-control" id="countries-list" ng-model="mySel">
+          <option *ngFor="let country of countries; let i = index" value="{{i}}">{{country.Name}}</option>
+        </select>
+      </div>
+      <button class="btn btn-default-a" type="button" (click)="openGreyground();openAddBox();">Add</button>
+      <button class="btn btn-default" type="button" (click)="openGreyground();openUpdateBox();getCurrentCountry();" style="position: fixed; top:151px; left: 530px; font-size: 1.1rem; text-align: center">Update</button>
+      <button class="btn btn-default-a" type="button" (click)="openGreyground();openDeleteBox();getCurrentCountry();" style="background-color: red">Delete</button>
+    </div>
+  </div>
+  <div class="background-handler" id="greyground">
+    <div class="add-box" id="addbox">
+        <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Add country</label>
+        <input style="margin: 5px ;" type="text" class="form-control" id="addInput" placeholder="Name:">
+        <button type="button" (click)="addCountry()" class="btn btn-default-a">Confirm</button>
+        <button type="button" (click)="closeGreyground();closeAddBox();refreshPage();" class="btn btn-default-a">Cancel</button>
+    </div>
+    <div class="update-box" id="updatebox">
+        <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Update country {{countries[tempId].Name}}</label>
+        <input style="margin: 5px;" type="text" class="form-control" id="updateInput" placeholder="New Name:">
+        <button type="button" (click)="updateCountry();closeUpdateBox();closeGreyground();" class="btn btn-default-a">Confirm</button>
+        <button type="button" (click)="closeGreyground();closeUpdateBox();" class="btn btn-default-a">Cancel</button>
+    </div>
+    <div class="delete-box" id="deletebox">
+        <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Delete country {{countries[tempId].Name}}</label>
+        <button type="button" (click)="deleteCountry();closeGreyground();closeDeleteBox();refreshPage();" class="btn btn-default-a">Confirm</button>
+        <button type="button" (click)="closeGreyground();closeDeleteBox();" class="btn btn-default-a">Cancel</button>
+    </div>
+    </div>
+</form>
+

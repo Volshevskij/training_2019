@@ -1,0 +1,218 @@
+.wall {
+  -count: 10;
+  -width: 20ch;
+  -gap: 1rem;
+    max-width: 6000px;
+    align-self: center;
+    margin: 0px auto;
+    margin-left: 250px;
+    width: 600px;
+    text-align: center;
+  }
+
+  .wall-post {
+    display: inline-block;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 1px 2px 3px rgb(0, 0, 0.003);
+    box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.3);
+    background-color: aqua;
+    margin: 10px;
+  }
+
+  .wall-post-header {
+  text-align: left;
+  padding-left: 10px;
+  background-color:rgb(19, 214, 214);
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  }
+
+  .wall-post-content {
+    text-align: left;
+    max-width: 600px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+
+    border-radius: 5px;
+    background-color: yellowgreen;
+  }
+
+  hr {
+    display: block;
+    max-width: 6000px;
+    height: 3px;
+    border-radius: 5px;
+    background-image: linear-gradient(rgb(103, 107, 103),rgb(11, 15, 13));
+    width: 600px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+body {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-default {
+  background-color: blue;
+  color: white;
+  text-shadow: 0px 2px 4px rgb(0,0,0.3);
+  position: relative;
+  top: -158px;
+  left: 400px;
+  z-index: 0;
+  width: 80px;
+}
+
+.control {
+ position: relative;
+ left: 480px;
+ top: 229px;
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+  width: 30%;
+}
+
+.column-box {
+  float: left;
+  padding: 10px;
+  width:50%;
+}
+
+.btn-default {
+  background-color: blue;
+  color: white;
+  text-shadow: 0px 2px 4px rgb(0,0,0.3);
+  position: relative;
+  top: -158px;
+  left: 400px;
+  z-index: 0;
+  width: 80px;
+}
+
+.control {
+ position: relative;
+ left: 50px;
+ top: 170px;
+}
+
+.form-control {
+  width: 200px;
+  margin-left: 5px;
+}
+
+.add-box {
+  position: fixed;
+  display: inline-block;
+  background-color: rgb(218, 223, 253);
+  border-radius: 5px;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  font-size: 1rem;
+  width: 300px;
+  left: 520px;
+  top: 60px;
+  text-align: center;
+  box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.background-handler {
+  display: inline-block;
+  background-color: rgba(128,128,128,0.5);
+  width: 2000px;
+  height: 3000px;
+  top: -100px;
+  z-index: 1;
+  position: fixed;
+}
+
+.update-box {
+  position: fixed;
+  display: inline-block;
+  background-color: rgb(218, 223, 253);
+  border-radius: 5px;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  font-size: 1rem;
+  width: 300px;
+  left: 520px;
+  top: 60px;
+  text-align: center;
+  box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.delete-box {
+  position: fixed;
+  display: inline-block;
+  background-color: rgb(218, 223, 253);
+  border-radius: 5px;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  font-size: 1rem;
+  width: 300px;
+  left: 520px;
+  top: 220px;
+  text-align: center;
+  box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.btn-default-a {
+  background-image: linear-gradient(blue,rgb(98, 98, 238));
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 142px;
+  height: 60px;
+  font-size: 2rem;
+  float: left;
+  border-radius: 6px;
+  color: white;
+  text-shadow: 0 2px 3px rgb(0, 0, 0.003);
+}
+
+span {
+  cursor: pointer;
+  font-size: 150%;
+}
+
+.magnifier {
+  position: fixed;
+  top: 80px;
+  left: 1260px;
+}
+
+label {
+  font-size: 2rem;
+  margin: -8px;
+  color: white;
+  text-shadow: 0 2px 3px rgb(0, 0, 0.003);
+ }
+
+ ul {
+  list-style-type: none;
+  margin: 0px 0px;
+ }
+
+ li {
+  margin-right: 40px;
+}
