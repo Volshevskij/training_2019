@@ -18,18 +18,18 @@ export class RolesService {
   }
 
   getRoles() {
-   return this.http.get('http://localhost:25128/api/role');
+   return this.http.get('http://localhost:8989/api/role');
  }
 
   updateRole(role: Role) {
-   return this.http.patch('http://localhost:25128/api/role', role);
+   return this.http.patch('http://localhost:8989/api/role', role);
  }
 
   addRole(role: Role) {
-  return this.http.post('http://localhost:25128/api/role', role);
+  return this.http.post('http://localhost:8989/api/role', role);
  }
 
   deleteRole(id: number) {
-  return this.http.delete('http://localhost:25128/api/role/' + id);
+  return this.http.delete('http://localhost:8989/api/role/' + id);
  }
 }

@@ -18,22 +18,22 @@ export class TeamsService {
   }
 
   getCountries() {
-    return this.http.get('http://localhost:25128/api/country');
+    return this.http.get('http://localhost:8989/api/country');
   }
 
   getTeams() {
-    return this.http.get('http://localhost:25128/api/team');
+    return this.http.get('http://localhost:8989/api/team');
   }
 
    updateTeam(team: Team) {
-    return this.http.patch('http://localhost:25128/api/team', team);
+    return this.http.patch('http://localhost:8989/api/team', team);
   }
 
    addTeam(team: Team) {
-   return this.http.post('http://localhost:25128/api/team', team);
+   return this.http.post('http://localhost:8989/api/team', team);
   }
 
    deleteTeam(id: number) {
-   return this.http.delete('http://localhost:25128/api/team/' + id);
+   return this.http.delete('http://localhost:8989/api/team/' + id);
   }
 }

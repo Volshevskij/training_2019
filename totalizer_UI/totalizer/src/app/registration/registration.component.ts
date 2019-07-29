@@ -1,45 +1,123 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { UsersService } from '../users/users.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from '../app.component';
 import { User } from '../users/Models/User';
-import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/toPromise';
-import * as rsx from 'rxjs';
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css'],
-  providers: [UsersService]
-})
-export class RegistrationComponent implements OnInit {
+    selector: 'app-registration',
+    templateUrl: './registration.component.html',
+    styleUrls: ['./registration.component.css'],
+    providers: [UsersService]
+  })
 
-  constructor(public regService: UsersService, http: HttpClient) { }
+  @NgModule({
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    declarations: [
+        AppComponent
+    ],
+    bootstrap: [AppComponent]
+  })
 
-  regModel: User;
-  roles: string[];
-  sc: any;
+ export class RegistrationComponent implements OnInit {
+    registerForm: FormGroup;
+    submitted = false;
 
-  ngOnInit() {
-  }
+    constructor(private formBuilder: FormBuilder, public regService: UsersService) { }
 
- async register() {
+    regModel: User;
+    roles: string[];
+    sc: any;
+
+    proove: User[];
+
+    inUse = false;
+
+    ngOnInit() {
+      this.registerForm = new FormGroup({
+        login: new FormControl('', Validators.required),
+        email: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required),
+        confirmPassword: new FormControl('', Validators.required)
+      });
+      this.createForm();
+      this.getUsers();
+    }
+
+    get f() { return this.registerForm.controls; }
+
+    onSubmit() {
+        this.submitted = true;
+        if (this.registerForm.invalid || this.inUse) {
+          return;
+      } else {
+        this.register();
+      }
+    }
+
+ MustMatch(controlName: string, matchingControlName: string) {
+      return (formGroup: FormGroup) => {
+          const control = formGroup.controls[controlName];
+          const matchingControl = formGroup.controls[matchingControlName];
+
+          if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+              return;
+          }
+
+          if (control.value !== matchingControl.value) {
+              matchingControl.setErrors({ mustMatch: true });
+          } else {
+              matchingControl.setErrors(null);
+          }
+      };
+    }
+
+    async register() {
     const elementLogin = (document.getElementById('login')) as HTMLSelectElement;
     const elementEmail = (document.getElementById('email')) as HTMLSelectElement;
     const elementPassord = (document.getElementById('password')) as HTMLSelectElement;
     const elementConfPassword = (document.getElementById('confirmPassword')) as HTMLSelectElement;
 
-    this.regModel = new User();
-    this.roles = [];
-    this.regModel.Login = elementLogin.value;
-    this.regModel.Email = elementEmail.value;
-    this.regModel.Password = elementPassord.value;
-    this.regModel.ConfirmPassword = elementConfPassword.value;
+    let isMatch = false;
+    this.proove.forEach(element => {
+      if (element.Login === elementLogin.value) {
+        isMatch = true;
+        return false;
+      }
+    });
 
-    this.regService.registerUser(this.regModel, this.roles).subscribe((data: any) => this.sc = data);
-    this.regService.userAuthentication(this.regModel.Login, this.regModel.Password).subscribe((data: any) => {
-      localStorage.setItem('userToken', data.access_token);
-      localStorage.setItem('userRoles', data.role);
-      localStorage.setItem('userName', data.username);
+    if (isMatch) {
+        alert('Login already in use');
+        return;
+    } else {
+      this.regModel = new User();
+      this.roles = [];
+      this.regModel.Login = elementLogin.value;
+      this.regModel.Email = elementEmail.value;
+      this.regModel.Password = elementPassord.value;
+      this.regModel.ConfirmPassword = elementConfPassword.value;
+      alert('Success');
+      this.regService.registerUser(this.regModel).subscribe((data: any) => this.sc = data);
+    }
+  }
+
+  getUsers() {
+    this.regService.getUsers().subscribe((data: User[]) => this.proove = data);
+  }
+
+    createForm() {
+      this.registerForm = this.formBuilder.group({
+        login: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required]
+    }, {
+        validator: this.MustMatch('password', 'confirmPassword')
     });
   }
 }

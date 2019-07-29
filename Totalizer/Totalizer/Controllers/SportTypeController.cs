@@ -29,6 +29,7 @@ namespace Totalizer.Controllers
             return service.GetItemById(id);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("sport_type")]
         [HttpPost]
         public void CreateSportType(SportType sportType)
@@ -36,6 +37,7 @@ namespace Totalizer.Controllers
             service.CreateItem(sportType);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("sport_type")]
         [HttpPatch]
         public void UpdateSportType(SportType sportType)
@@ -43,6 +45,7 @@ namespace Totalizer.Controllers
             service.UpdateItem(sportType);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("sport_type/{id}")]
         [HttpDelete]
         public void DeleteSportType(int id)

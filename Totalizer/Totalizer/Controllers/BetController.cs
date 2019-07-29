@@ -15,6 +15,7 @@ namespace Totalizer.Controllers
             service = _service;
         }
 
+        [Authorize(Roles = "User")]
         [Route("bet")]
         [HttpPost]
         public void CreateBet(Bet bet)
@@ -22,6 +23,7 @@ namespace Totalizer.Controllers
             service.CreateItem(bet);
         }
 
+        [Authorize(Roles = "User")]
         [Route("bet")]
         [HttpPatch]
         public void UpdateBet(Bet bet)
@@ -29,6 +31,7 @@ namespace Totalizer.Controllers
             service.UpdateItem(bet);
         }
 
+        [Authorize(Roles = "User")]
         [Route("bet/{id}")]
         [HttpDelete]
         public void DeleteBet(int id)

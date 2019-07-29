@@ -32,7 +32,7 @@
             </article>
       </div>
       <div class="column">
-          <div class="control">
+          <div *ngIf="userService.roleMatch(['Editor'])" class="control">
               <button (click)="getCurrentBet(i);openGreyground();openUpdateBox();" style="height: 110px;" value="{{i}}" id="updateButton{{i}}" class="btn btn-default">Update</button>
               <button (click)="getCurrentBet(i);openGreyground();openDeleteBox();" value="{{i}}" style="position: relative; left: 320px; top: -74px; background-color: red" class="btn btn-default">Delete</button>
             </div>
@@ -94,9 +94,8 @@
                 </select>
                 <label>Bet team</label>
                 <select class="form-control" style="margin: 6px; margin-left: 4px; margin-right: 3px; width: 290px;" id="updateInputTeam" ng-model="mySel">
-                  <option value="0">{{this.bets[this.betTempId].Event.Team1.Name}}</option>
-                  <option value="1">{{this.bets[this.betTempId].Event.Team2.Name}}</option>
-                </select>
+                    <option *ngFor="let team of teams; let i = index" value="{{i}}">{{team.Name}}</option>
+                  </select>
             <button type="button" (click)="updateBet();closeUpdateBox();closeGreyground();" class="btn btn-default-a">Confirm</button>
             <button type="button" (click)="closeGreyground();closeUpdateBox();" class="btn btn-default-a">Cancel</button>
         </div>
@@ -106,6 +105,6 @@
             <button type="button" (click)="closeGreyground();closeDeleteBox();" class="btn btn-default-a">Cancel</button>
         </div>
      </div>
-     <button (click)="openGreyground();openAddBox();" style="position:fixed; top:580px; left: 1200px;" id="addButton" class="btn btn-default">Add bet</button>
+     <button *ngIf="userService.roleMatch(['Editor'])" (click)="openGreyground();openAddBox();" style="position:fixed; top:580px; left: 1200px;" id="addButton" class="btn btn-default">Add bet</button>
      <span (click)="searchInfo()" style="z-index: 0" class="magnifier">🔍</span>
     </body>

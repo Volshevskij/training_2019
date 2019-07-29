@@ -10,6 +10,7 @@ import { Team } from '../teams/Models/Team';
 import { TeamsService } from '../teams/teams.service';
 import { SearchService } from '../internal-search/search.service';
 import { InternalSearchComponent } from '../internal-search/internal-search.component';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 
@@ -25,7 +26,7 @@ export class BetsComponent implements OnInit {
   @Input() search: InternalSearchComponent;
 
   constructor(private service: BetsService, private eventService: EventsService, private personsService: PersonsService,
-              private teamsService: TeamsService, http: HttpClient, private searchService: SearchService) {
+              private teamsService: TeamsService, private searchService: SearchService, public userService: UsersService) {
   }
 
   public  booleanData = {};
@@ -116,21 +117,18 @@ export class BetsComponent implements OnInit {
   updateBet() {
     this.getCurrentEvent('updateInputEvent');
     this.getCurrentPerson('updateInputPerson');
+    this.getCurrentTeam('updateInputTeam');
     const elementDate = (document.getElementById('updateInputDate')) as HTMLSelectElement;
     const elementCoefficient = (document.getElementById('updateInputCoefficient')) as HTMLSelectElement;
     const elementAmount = (document.getElementById('updateInputAmount')) as HTMLSelectElement;
-    const elementTeam = (document.getElementById('updateInputTeam')) as HTMLSelectElement;
-    const teamOption = parseInt(elementTeam.value);
+
     this.bets[this.betTempId].Date = new Date(elementDate.value);
     this.bets[this.betTempId].Coefficient = parseInt(elementCoefficient.value);
     this.bets[this.betTempId].Amount = parseFloat(elementAmount.value);
     this.bets[this.betTempId].Event = this.events[this.eventTempId];
     this.bets[this.betTempId].Person = this.persons[this.personTempId];
-    if (teamOption === 0) {
-      this.bets[this.betTempId].Team = this.bets[this.betTempId].Event.Team1;
-    } else {
-      this.bets[this.betTempId].Team = this.bets[this.betTempId].Event.Team2;
-    }
+    this.bets[this.betTempId].Team = this.teams[this.teamTempId];
+
     this.service.updateBet(this.bets[this.betTempId]).subscribe((data: Bet) => this.sc = data);
   }
 
@@ -141,6 +139,7 @@ export class BetsComponent implements OnInit {
     const elementDate = (document.getElementById('addInputDate')) as HTMLSelectElement;
     const elementCoefficient = (document.getElementById('addInputCoefficient')) as HTMLSelectElement;
     const elementAmount = (document.getElementById('addInputAmount')) as HTMLSelectElement;
+
     const newBet = new Bet();
     newBet.Date = new Date(elementDate.value);
     newBet.Coefficient = parseInt(elementCoefficient.value);
@@ -148,6 +147,7 @@ export class BetsComponent implements OnInit {
     newBet.Event = this.events[this.eventTempId];
     newBet.Person = this.persons[this.personTempId];
     newBet.Team = this.teams[this.teamTempId];
+
     this.service.addBet(newBet).subscribe((data: Bet) => this.sc = data);
   }
 

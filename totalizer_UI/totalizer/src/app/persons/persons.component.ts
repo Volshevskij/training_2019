@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PersonsService} from './persons.service';
 import { Person } from './Models/Person';
 import { HttpClient } from '@angular/common/http';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'app-persons',
@@ -11,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PersonsComponent implements OnInit {
 
-  constructor(private service: PersonsService, http: HttpClient) {
+  constructor(private service: PersonsService, http: HttpClient, public userService: UsersService) {
   }
 
   public persons: Person[];

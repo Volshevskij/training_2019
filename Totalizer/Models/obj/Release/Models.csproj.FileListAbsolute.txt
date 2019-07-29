@@ -1,0 +1,6 @@
+C:\Users\User\source\repos\Totalizer\Models\bin\Release\Models.dll
+C:\Users\User\source\repos\Totalizer\Models\bin\Release\Models.pdb
+C:\Users\User\source\repos\Totalizer\Models\obj\Release\Models.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Totalizer\Models\obj\Release\Models.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Totalizer\Models\obj\Release\Models.dll
+C:\Users\User\source\repos\Totalizer\Models\obj\Release\Models.pdb

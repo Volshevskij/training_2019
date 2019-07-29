@@ -19,7 +19,7 @@ export class AuthorizeService {
   }
 
   register(obj: AuthorizeModel) {
-  this.http.post('http://localhost:25128/api/Account/Login', obj);
+  this.http.post('http://localhost:8989/api/Account/Login', obj);
  }
 
 }

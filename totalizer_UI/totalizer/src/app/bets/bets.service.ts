@@ -17,22 +17,22 @@ export class BetsService {
   }
 
   getBets() {
-   return this.http.get('http://localhost:25128/api/bet');
+   return this.http.get('http://localhost:8989/api/bet');
  }
 
   updateBet(bet: Bet) {
-   return this.http.patch('http://localhost:25128/api/bet', bet);
+   return this.http.patch('http://localhost:8989/api/bet', bet);
  }
 
   addBet(bet: Bet) {
-  return this.http.post('http://localhost:25128/api/bet', bet);
+  return this.http.post('http://localhost:8989/api/bet', bet);
  }
 
   deleteBet(id: number) {
-  return this.http.delete('http://localhost:25128/api/bet/' + id);
+  return this.http.delete('http://localhost:8989/api/bet/' + id);
  }
 
   getMatchingBet(id: number) {
-  return this.http.get('http://localhost:25128/api/match_bet/' + id);
+  return this.http.get('http://localhost:8989/api/match_bet/' + id);
  }
 }

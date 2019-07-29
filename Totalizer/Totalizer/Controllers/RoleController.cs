@@ -29,6 +29,7 @@ namespace Totalizer.Controllers
             return service.GetItemById(id);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("role")]
         [HttpPost]
         public void CreateRole(Role role)
@@ -36,6 +37,7 @@ namespace Totalizer.Controllers
             service.CreateItem(role);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("role")]
         [HttpPatch]
         public void UpdateRole([FromBody]Role role)
@@ -50,6 +52,7 @@ namespace Totalizer.Controllers
             return null;
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("role/{id}")]
         [HttpDelete]
         public void DeleteRole(int id)

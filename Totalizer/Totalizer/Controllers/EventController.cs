@@ -15,6 +15,7 @@ namespace Totalizer.Controllers
             service = _service;
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("event")]
         [HttpPost]
         public void CreateEvent(Event @event)
@@ -22,6 +23,7 @@ namespace Totalizer.Controllers
             service.CreateItem(@event);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("event")]
         [HttpPatch]
         public void UpdateEvent(Event @event)
@@ -29,6 +31,7 @@ namespace Totalizer.Controllers
             service.UpdateItem(@event);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("event/{id}")]
         [HttpDelete]
         public void DeleteEvent(int id)

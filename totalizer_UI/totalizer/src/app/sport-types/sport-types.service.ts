@@ -19,18 +19,18 @@ export class SportTypesService {
   }
 
   getSportTypes() {
-    return this.http.get('http://localhost:25128/api/sport_type');
+    return this.http.get('http://localhost:8989/api/sport_type');
   }
 
    updateSportType(sportType: SportType) {
-    return this.http.patch('http://localhost:25128/api/sport_type', sportType);
+    return this.http.patch('http://localhost:8989/api/sport_type', sportType);
   }
 
    addSportType(sportType: SportType) {
-   return this.http.post('http://localhost:25128/api/sport_type', sportType);
+   return this.http.post('http://localhost:8989/api/sport_type', sportType);
   }
 
    deleteSportType(id: number) {
-   return this.http.delete('http://localhost:25128/api/sport_type/' + id);
+   return this.http.delete('http://localhost:8989/api/sport_type/' + id);
   }
 }

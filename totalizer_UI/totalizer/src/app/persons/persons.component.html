@@ -22,7 +22,7 @@
             </article>
       </div>
       <div class="column">
-          <div class="control">
+          <div *ngIf="userService.roleMatch(['Editor'])" class="control">
               <button (click)="getCurrentPerson(i);openGreyground();openUpdateBox();" style="height: 110px;" value="{{i}}" id="updateButton{{i}}" class="btn btn-default">Update</button>
               <button (click)="getCurrentPerson(i);openGreyground();openDeleteBox();" value="{{i}}" style="position: relative; left: 320px; top: -74px; background-color: red" class="btn btn-default">Delete</button>
             </div>
@@ -80,5 +80,5 @@
       <button type="button" (click)="closeGreyground();closeDeleteBox();" class="btn btn-default-a">Cancel</button>
   </div>
     </div>
-     <button (click)="openGreyground();openAddBox();" style="position:fixed; top:100px; left: 100px;" id="addButton" class="btn btn-default">Add user</button>
+     <button *ngIf="userService.roleMatch(['Editor'])" (click)="openGreyground();openAddBox();" style="position:fixed; top:580px; left: 1200px;" id="addButton" class="btn btn-default">Add user</button>
     </body>

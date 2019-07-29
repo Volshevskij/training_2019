@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { UsersService } from '../users/users.service';
 import { Account } from '../users/Models/Account';
 import { User } from '../users/Models/User';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-my-profile',
@@ -37,12 +38,12 @@ export class MyProfileComponent implements OnInit {
     this.closeUpdateBox();
     this.closeGreyground();
     this.closePasBox();
-    await this.getUser();
+    this.getUser();
   }
 
  async getUser() {
    this.login = localStorage.getItem('userName');
-   await this.usersService.getMatchingUser(this.login).subscribe((data: Person) => this.person = data);
+   this.usersService.getMatchingUser(this.login).subscribe((data: Person) => this.person = data);
   }
 
   setValues() {

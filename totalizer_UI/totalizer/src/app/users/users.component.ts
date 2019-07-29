@@ -87,7 +87,7 @@ addUser() {
 
   newUser.Roles = newRoles;
 
-  this.service.registerUser(newUser, []).subscribe((data: User) => this.sc = data);
+  this.service.registerUser(newUser).subscribe((data: User) => this.sc = data);
 }
 
 deleteUser() {

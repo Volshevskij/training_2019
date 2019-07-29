@@ -33,6 +33,7 @@ namespace Totalizer.Controllers
             return userService.GetItemById(id);
         }
 
+        [Authorize(Roles = "Admin")]
         [Route("user/{id}")]
         [HttpDelete]
         public void DeleteUser(int id)
@@ -40,6 +41,7 @@ namespace Totalizer.Controllers
            userService.DeleteItem(id);
         }
 
+        [Authorize(Roles = "Admin")]
         [Route("user")]
         [HttpPost]
         public void CreateUser(User user)
@@ -47,6 +49,7 @@ namespace Totalizer.Controllers
             userService.CreateItem(user);
         }
 
+        [Authorize(Roles = "Admin")]
         [Route("user")]
         [HttpPatch]
         public void UpdateUser([FromBody]User user)

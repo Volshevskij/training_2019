@@ -18,18 +18,18 @@ export class CountriesService {
   }
 
   getCountries() {
-   return this.http.get('http://localhost:25128/api/country');
+   return this.http.get('http://localhost:8989/api/country');
  }
 
   updateCountry(country: Country) {
-   return this.http.patch('http://localhost:25128/api/country', country);
+   return this.http.patch('http://localhost:8989/api/country', country);
  }
 
   addCountry(country: Country) {
-  return this.http.post('http://localhost:25128/api/country', country);
+  return this.http.post('http://localhost:8989/api/country', country);
  }
 
   deleteCountry(id: number) {
-  return this.http.delete('http://localhost:25128/api/country/' + id);
+  return this.http.delete('http://localhost:8989/api/country/' + id);
  }
 }

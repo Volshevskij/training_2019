@@ -34,6 +34,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './auth.guard';
 import { AuthInterceptor } from './auth.interceptor';
 import { routes } from './app-routing.module';
+import { UsersService } from './users/users.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -66,12 +68,11 @@ import { routes } from './app-routing.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-     RouterModule.forRoot(routes)
-      //  [
-    //   { path: 'app-main-form-component', component: MainFormComponentComponent }
-    // ])
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [CountriesService, FirstService, SportTypesService, TeamsService, AuthGuard,
+  providers: [CountriesService, UsersService, FirstService, SportTypesService, TeamsService, AuthGuard,
   {
     provide : HTTP_INTERCEPTORS,
     useClass : AuthInterceptor,

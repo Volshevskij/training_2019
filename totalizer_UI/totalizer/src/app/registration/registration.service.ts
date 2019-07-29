@@ -18,7 +18,7 @@ export class RegistrationService {
   }
 
   register(obj: RegisterInfo) {
-  this.http.post('http://localhost:25128/api/Account/Register', obj);
+  this.http.post('http://localhost:8989/api/Account/Register', obj);
  }
 
 }

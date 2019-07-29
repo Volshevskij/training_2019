@@ -8,6 +8,7 @@ import { SportType } from '../sport-types/Models/SportType';
 import { TeamsService } from '../teams/teams.service';
 import { InternalSearchComponent } from '../internal-search/internal-search.component';
 import { SearchService } from '../internal-search/search.service';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'app-events',
@@ -20,7 +21,7 @@ export class EventsComponent implements OnInit {
   @Input() search: InternalSearchComponent;
 
   constructor(private service: EventsService, http: HttpClient, private sportTypeService: SportTypesService,
-              private teamService: TeamsService, private searchService: SearchService) {
+              private teamService: TeamsService, private searchService: SearchService, public userService: UsersService) {
   }
 
   sc: Event;
@@ -66,18 +67,17 @@ export class EventsComponent implements OnInit {
 
   getTeams() {
     this.teams = [];
-    this.teamService.getTeams().subscribe((data: Team[]) => (this.teams = data, console.log(typeof this.teams)));
+    this.teamService.getTeams().subscribe((data: Team[]) => (this.teams = data));
   }
 
   getSportTypes() {
     this.sportTypes = [];
-    this.sportTypeService.getSportTypes().subscribe((data: SportType[]) => (this.sportTypes = data, console.log(typeof this.sportTypes)));
+    this.sportTypeService.getSportTypes().subscribe((data: SportType[]) => (this.sportTypes = data));
   }
 
   getCurrentEvent(Id: string) {
     const element = (document.getElementById('updateButton' + Id)) as HTMLSelectElement;
     this.eventTempId = parseInt(element.value);
-    console.log(this.eventTempId);
   }
 
   getCurrentTeams(holderId1: string, holderId2: string) {
@@ -98,7 +98,6 @@ export class EventsComponent implements OnInit {
     const elementDate = (document.getElementById('updateInputDate')) as HTMLSelectElement;
     const elementStatus = (document.getElementById('updateInputStatus')) as HTMLSelectElement;
     this.events[this.eventTempId].Date = new Date(elementDate.value);
-    console.log(this.events[this.eventTempId].Date);
     this.events[this.eventTempId].Team1 = this.teams[this.team1TempId];
     this.events[this.eventTempId].Team2 = this.teams[this.team2TempId];
     this.events[this.eventTempId].SportType = this.sportTypes[this.sportTypeTempId];
@@ -121,7 +120,6 @@ export class EventsComponent implements OnInit {
   }
 
   deleteEvent() {
-    console.log(this.events[this.eventTempId].Id);
     this.service.deleteEvent(this.events[this.eventTempId].Id).subscribe((data: Event) => this.sc = data);
   }
 

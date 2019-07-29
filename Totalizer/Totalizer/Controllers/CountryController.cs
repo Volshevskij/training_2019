@@ -29,6 +29,7 @@ namespace Totalizer.Controllers
            return service.GetItemById(id);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("country")]
         [HttpPost]
         public void CreateCountry(Country country)
@@ -36,6 +37,7 @@ namespace Totalizer.Controllers
             service.CreateItem(country);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("country")]
         [HttpPatch]
         public void UpdateCountry([FromBody]Country country)
@@ -50,6 +52,7 @@ namespace Totalizer.Controllers
             return null;
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("country/{id}")]
         [HttpDelete]
         public void DeleteCountry(int id)

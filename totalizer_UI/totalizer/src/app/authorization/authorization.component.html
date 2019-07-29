@@ -1,6 +1,24 @@
 <div class="box">
-  <input type="text" class="form-control" id="login" placeholder="Login:">
-  <input type="text" class="form-control" id="password" placeholder="Password:">
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <input id="login" style="margin-top: 3px;" type="text" placeholder="{{submitted && f.login.errors ? 'Login required' : 'Login:'}}" formControlName="login" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.login.errors }" />
+          <div *ngIf="f.login.errors != null">
+          <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
+              <div *ngIf="f.login.errors.required"><label>Login required</label></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+          <input id="password" type="password" placeholder="{{submitted && f.password.errors ? 'Password required' : 'Password:'}}" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="f.password.errors != null">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required"><label>Password required</label></div>
+              <div *ngIf="f.password.errors.minlength"><label>Password must be at least 6 characters</label></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" id="confirmButton" class="btn btn-default">Confirm</button>
+      </div>
+  </form>
 </div>
-<button (click)="this.authorize();" id="confirmButton" class="btn btn-default">Confirm</button>
-

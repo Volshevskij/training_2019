@@ -1,6 +1,6 @@
 <body>
   <ul>
-    <li>
+    <li *ngIf="userService.roleMatch(['Editor'])">
       <app-side-navigation></app-side-navigation>
     </li>
       <li [routerLinkActive]='["link-active"]'>
@@ -12,7 +12,7 @@
         <a [routerLink]='["/app-bet-box"]' class="dropbtn">
           Bets
           </a>
-          <div class="dropdown-content" style="width: 81px;">
+          <div *ngIf="userService.roleMatch(['User'])" class="dropdown-content" style="width: 81px;">
               <a [routerLink]='["/app-my-bets-box"]'>My bets</a>
           </div>
       </li>
@@ -25,22 +25,22 @@
         <a [routerLink]='["/app-persons"]' class="dropbtn">
           Users
         </a>
-        <div class="dropdown-content">
+        <div *ngIf="userService.roleMatch(['User'])" class="dropdown-content">
             <a [routerLink]='["/app-my-profile"]'>My account</a>
         </div>
       </li>
       <li [routerLinkActive]='["link-active"]' style="float:right; position: relative; left: -20px">
-        <a [routerLink]='["/app-registration"]'>
+        <a *ngIf="userService.roleMatch(['User']) === false" [routerLink]='["/app-registration"]'>
           Register
         </a>
       </li>
       <li [routerLinkActive]='["link-active"]' style="float:right;position: relative; left: -20px">
-        <a [routerLink]='["/app-authorization"]'>
+        <a *ngIf="userService.roleMatch(['User']) === false" [routerLink]='["/app-authorization"]'>
           Got Account?
         </a>
       </li>
       <li [routerLinkActive]='["link-active"]' style="float:right;position: relative; left: -20px">
-          <a [routerLink]='["/app-authorization"]' (click)="Logout();">
+          <a [routerLink]='["/app-authorization"]' *ngIf="userService.roleMatch(['User'])" (click)="Logout();">
             Logout
           </a>
         </li>
@@ -49,6 +49,12 @@
             Info
           </a>
       </li>
+      <li *ngIf="userService.roleMatch(['User'])" [routerLinkActive]='["link-active"]' style="float:right;position: relative; left: -20px">
+        <a [routerLink]='["/app-my-profile"]'>
+          {{this.user}}
+        </a>
+    </li>
   </ul>
   <span (click)="bringWindowUp()">🔺</span>
 </body>
+<!-- *ngIf="userService.roleMatch(['User']) === false" -->

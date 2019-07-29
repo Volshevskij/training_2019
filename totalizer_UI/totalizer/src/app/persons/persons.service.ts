@@ -18,22 +18,22 @@ export class PersonsService {
   }
 
   getPersons() {
-   return this.http.get('http://localhost:25128/api/person');
+   return this.http.get('http://localhost:8989/api/person');
  }
 
  getPersonById(id: number) {
-  return this.http.get('http://localhost:25128/api/person/' + id);
+  return this.http.get('http://localhost:8989/api/person/' + id);
 }
 
   updatePerson(person: Person) {
-   return this.http.patch('http://localhost:25128/api/person', person);
+   return this.http.patch('http://localhost:8989/api/person', person);
  }
 
   addPerson(person: Person) {
-  return this.http.post('http://localhost:25128/api/person', person);
+  return this.http.post('http://localhost:8989/api/person', person);
  }
 
   deletePerson(id: number) {
-  return this.http.delete('http://localhost:25128/api/person/' + id);
+  return this.http.delete('http://localhost:8989/api/person/' + id);
  }
 }

@@ -18,20 +18,19 @@ const httpOptions = {
 @Injectable()
 
 export class UsersService {
-  readonly rootUrl = 'http://localhost:25128';
+  readonly rootUrl = 'http://localhost:8989';
   constructor(private http: HttpClient) {
   }
 
-  registerUser(user: User, roles: string[]) {
-    if (user.Roles.length === 0 || user.Roles === null) {
-      roles.push('User');
-      user.Roles = roles;
-    }
-    return this.http.post('http://localhost:25128/api/Account/Register', user);
+  registerUser(user: User) {
+    user.Roles = [];
+    user.Roles.push('User');
+
+    return this.http.post('http://localhost:8989/api/Account/Register', user);
   }
 
   test() {
-    return this.http.get('http://localhost:25128/api/Account/Test');
+    return this.http.get('http://localhost:8989/api/Account/Test');
   }
 
   userAuthentication(userName, password) {
@@ -50,6 +49,11 @@ export class UsersService {
   }
 
   roleMatch(allowedRoles): boolean {
+
+    if (allowedRoles === null || localStorage.getItem('userRoles') === null) {
+      return false;
+    }
+
     let isMatch = false;
     const userRoles: string[] = JSON.parse(localStorage.getItem('userRoles'));
     allowedRoles.forEach(element => {

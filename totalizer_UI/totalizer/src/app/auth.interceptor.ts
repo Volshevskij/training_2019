@@ -14,7 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
             return next.handle(req.clone());
         }
 
-        if (localStorage.getItem('userToken') != null) {
+        if (!!localStorage.getItem('userToken')) {
             const clonedreq = req.clone({
                 headers: req.headers.set('Authorization', 'Bearer ' + localStorage.getItem('userToken'))
             });
@@ -30,7 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     }
                 );
         } else {
-            this.router.navigateByUrl('/app-authorization');
+          return next.handle(req);
         }
     }
 }

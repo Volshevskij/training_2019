@@ -29,6 +29,7 @@ namespace Totalizer.Controllers
             return service.GetItemById(id);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("team")]
         [HttpPost]
         public void CreateTeam(Team team)
@@ -36,6 +37,7 @@ namespace Totalizer.Controllers
             service.CreateItem(team);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("team")]
         [HttpPatch]
         public void UpdateTeam(Team team)
@@ -43,6 +45,7 @@ namespace Totalizer.Controllers
             service.UpdateItem(team);
         }
 
+        [Authorize(Roles = "Editor")]
         [Route("team/{id}")]
         [HttpDelete]
         public void DeleteTeam(int id)
