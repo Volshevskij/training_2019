@@ -1,0 +1,41 @@
+<form>
+  <div class = "element-form">
+     <div class="form-group">
+       <div class="form-group">
+         <label for="labelForm" style="font-size: 2rem; text-shadow: 3px 4px 3px rgba(0, 0, 0, 0.3);">Teams</label>
+         <select class="form-control" id="teams-list" ng-model="mySel">
+           <option *ngFor="let team of teams; let i = index" value="{{i}}">{{team.Name}}: {{team.Country.Name}}</option>
+         </select>
+       </div>
+       <button class="btn btn-default-a" type="button" (click)="openGreyground();openAddBox();">Add</button>
+       <button class="btn btn-default" type="button" (click)="openGreyground();openUpdateBox();getCurrentTeam();" style="position: fixed; top:151px; left: 910px; font-size: 1.1rem; text-align: center">Update</button>
+       <button class="btn btn-default-a" type="button" (click)="openGreyground();openDeleteBox();getCurrentTeam();" style="background-color: red">Delete</button>
+     </div>
+   </div>
+   <div class="background-handler" id="greygroundT">
+     <div class="add-box" id="addboxT">
+         <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Add team</label>
+         <input style="margin: 5px ;" type="text" class="form-control" id="addInputT" placeholder="Name:">
+         <select class="form-control" style="margin: 5px;" id="inteams-contry-list-add" ng-model="myTS">
+          <option *ngFor="let country of countries; let i = index" value="{{i}}">{{country.Name}}</option>
+         </select>
+         <button type="button" (click)="addTeam()" class="btn btn-default-a">Confirm</button>
+         <button type="button" (click)="closeGreyground();closeAddBox();refreshPage();" class="btn btn-default-a">Cancel</button>
+     </div>
+     <div class="update-box" id="updateboxT">
+         <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Update team {{teams[tempId].Name}}</label>
+         <input style="margin: 5px;" type="text" class="form-control" id="updateInputT" placeholder="New Name:">
+         <select class="form-control" style="margin: 5px;" id="inteams-contry-list-update" ng-model="myTS">
+          <option *ngFor="let country of countries; let i = index" value="{{i}}">{{country.Name}}</option>
+         </select>
+         <button type="button" (click)="updateTeam();closeUpdateBox();closeGreyground();" class="btn btn-default-a">Confirm</button>
+         <button type="button" (click)="closeGreyground();closeUpdateBox();" class="btn btn-default-a">Cancel</button>
+     </div>
+     <div class="delete-box" id="deleteboxT">
+         <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Delete team {{teams[tempId].Name}}</label>
+         <button type="button" (click)="deleteTeam();closeGreyground();closeDeleteBox();refreshPage();" class="btn btn-default-a">Confirm</button>
+         <button type="button" (click)="closeGreyground();closeDeleteBox();" class="btn btn-default-a">Cancel</button>
+     </div>
+     </div>
+ </form>
+
