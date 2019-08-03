@@ -1,0 +1,35 @@
+<form>
+  <div class = "element-form">
+     <div class="form-group">
+       <div class="form-group">
+         <label for="labelForm" style="font-size: 2rem; text-shadow: 3px 4px 3px rgba(0, 0, 0, 0.3);">Sport types</label>
+         <select class="form-control" id="sportTypes-list" ng-model="mySel">
+           <option *ngFor="let sportType of sportTypes; let i = index" value="{{i}}">{{sportType.Name}}</option>
+         </select>
+       </div>
+       <button class="btn btn-default-a" type="button" (click)="openGreyground();openAddBox();">Add</button>
+       <button class="btn btn-default" type="button" (click)="openGreyground();openUpdateBox();getCurrentSportType();" style="position: fixed; top:451px; left: 530px; font-size: 1.1rem; text-align: center">Update</button>
+       <button class="btn btn-default-a" type="button" (click)="openGreyground();openDeleteBox();getCurrentSportType();" style="background-color: red">Delete</button>
+     </div>
+   </div>
+   <div class="background-handler" id="greygroundS">
+     <div class="add-box" id="addboxS">
+         <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Add sport type</label>
+         <input style="margin: 5px ;" type="text" class="form-control" id="addInputS" placeholder="Name:">
+         <button type="button" (click)="addSportType()" class="btn btn-default-a">Confirm</button>
+         <button type="button" (click)="closeGreyground();closeAddBox();refreshPage();" class="btn btn-default-a">Close</button>
+     </div>
+     <div class="update-box" id="updateboxS">
+         <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Update sport type {{sportTypes[tempId].Name}}</label>
+         <input style="margin: 5px;" type="text" class="form-control" id="updateInputS" placeholder="New Name:">
+         <button type="button" (click)="updateSportType();closeUpdateBox();closeGreyground();" class="btn btn-default-a">Confirm</button>
+         <button type="button" (click)="closeGreyground();closeUpdateBox();" class="btn btn-default-a">Cancel</button>
+     </div>
+     <div class="delete-box" id="deleteboxS">
+         <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Delete sport type {{sportTypes[tempId].Name}}</label>
+         <button type="button" (click)="deleteSportType();closeGreyground();closeDeleteBox();refreshPage();" class="btn btn-default-a">Confirm</button>
+         <button type="button" (click)="closeGreyground();closeDeleteBox();" class="btn btn-default-a">Cancel</button>
+     </div>
+     </div>
+ </form>
+

@@ -1,0 +1,2 @@
+C:\Users\User\source\repos\Totalizer\Totalizer.Tests\obj\Debug\Totalizer.Tests.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Totalizer\Totalizer.Tests\obj\Debug\Totalizer.Tests.csproj.CoreCompileInputs.cache

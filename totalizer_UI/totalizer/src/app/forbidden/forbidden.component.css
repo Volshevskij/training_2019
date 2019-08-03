@@ -1,0 +1,22 @@
+.forbidden {
+  display: block;
+  background-color: rgb(165, 192, 159);
+  color: white;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  text-shadow: 1px 2px 3px rgb(0, 0, 0.003);
+  font-size: 3rem;
+  width: 900px;
+  border-radius: 5px;
+  box-shadow: 5px 7px 5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  left: 20px;
+}
+
+ul {
+  list-style-type: none;
+ }
+
+ hr {
+   width: 900px;
+   margin-left: -40px;
+ }
