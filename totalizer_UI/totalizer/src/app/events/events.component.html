@@ -1,0 +1,104 @@
+<body>
+    <div class="wall">
+      <div class="row" *ngFor="let event of events; let i = index">
+       <div class="column">
+            <article class="wall-post wall-post-a">
+                <header class="wall-post-header">
+                  New Event! {{event.Team1.Name}} vs {{event.Team2.Name}} #{{event.Id}}
+                </header>
+                <hr>
+                <div class="wall-post-content">
+                See results at: {{event.Date | date: 'dd.MM.yyyy'}}
+                </div>
+                <div class="wall-post-content">
+                Sport type: {{event.SportType.Name}}
+                </div>
+                <div class="wall-post-content">
+                    Status: {{event.Status}}
+                    </div>
+              </article>
+        </div>
+        <div class="column">
+            <div *ngIf="userService.roleMatch(['Editor'])" class="control">
+                <button (click)="getCurrentEvent(i);openGreyground();openUpdateBox();" style="height: 110px;" value="{{i}}" id="updateButton{{i}}" class="btn btn-default">Update</button>
+                <button (click)="getCurrentEvent(i);openGreyground();openDeleteBox();" value="{{i}}" style="position: relative; left: 320px; top: -74px; background-color: red" class="btn btn-default">Delete</button>
+              </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="background-handler" id="greyground">
+          <div class="add-box" id="addbox">
+            <ul>
+              <li>
+                  <label for="labelForm" style="font-size: 2rem; margin-bottom: -20px;">Add new event</label>
+              </li>
+              <li>
+                  <label style="font-size: 2rem;">Date</label>
+              </li>
+            </ul>
+              <input style="margin: 5px ;" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="date" class="form-control" id="addInputDate" placeholder="Date:">
+              <label>Team 1</label>
+              <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="addInputTeam1" ng-model="mySel">
+                  <option *ngFor="let team1 of teams; let i = index" value="{{i}}">{{team1.Name}}</option>
+                </select>
+                <label>Team 2</label>
+                <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="addInputTeam2" ng-model="mySel">
+                    <option *ngFor="let team2 of teams; let i = index" value="{{i}}">{{team2.Name}}</option>
+                  </select>
+                  <label>Sport type</label>
+                  <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="addInputSportType" ng-model="mySel">
+                      <option *ngFor="let sport of sportTypes; let i = index" value="{{i}}">{{sport.Name}}</option>
+                    </select>
+                    <label style="margin-bottom: -20px;">Status</label>
+                    <select class="form-control" style="margin: 6px; margin-left: 4px; margin-right: 3px; width: 290px;" id="addInputStatus">
+                        <option value="Preparation">Preparation</option>
+                        <option value="In progress">In progress</option>
+                        <option value="Finished">Finished</option>
+                      </select>
+              <button type="button" (click)="addEvent()" class="btn btn-default-a">Confirm</button>
+              <button type="button" (click)="closeGreyground();closeAddBox();refreshPage();" class="btn btn-default-a">Close</button>
+        </div>
+          <div class="update-box" id="updatebox">
+              <ul>
+                  <li>
+                      <label for="labelForm" style="font-size: 2rem; margin-bottom: -40px;">Update event</label>
+                  </li>
+                  <li>
+                    <label for="labelForm" style="font-size: 2rem; margin-bottom: -40px;"># {{this.events[this.eventTempId].Id}}</label>
+                  </li>
+                  <li>
+                      <label style="font-size: 2rem;">Date</label>
+                  </li>
+                </ul>
+                  <input style="margin: 5px ;" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" type="date" class="form-control" id="updateInputDate" placeholder="Date:">
+                  <label>Team 1</label>
+                  <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="updateInputTeam1" ng-model="mySel">
+                      <option *ngFor="let team1 of teams; let i = index" value="{{i}}">{{team1.Name}}</option>
+                    </select>
+                    <label>Team 2</label>
+                    <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="updateInputTeam2" ng-model="mySel">
+                        <option *ngFor="let team2 of teams; let i = index" value="{{i}}">{{team2.Name}}</option>
+                      </select>
+                      <label>Sport type</label>
+                      <select class="form-control" style="margin: 2px; margin-left: 4px; margin-right: 3px; width: 290px;" id="updateInputSportType" ng-model="mySel">
+                          <option *ngFor="let sport of sportTypes; let i = index" value="{{i}}">{{sport.Name}}</option>
+                        </select>
+                        <label style="margin-bottom: -20px;">Status</label>
+                        <select class="form-control" style="margin: 6px; margin-left: 4px; margin-right: 3px; width: 290px;" id="updateInputStatus">
+                            <option value="Preparation">Preparation</option>
+                            <option value="In progress">In progress</option>
+                            <option value="Finished">Finished</option>
+                          </select>
+              <button type="button" (click)="updateEvent();closeUpdateBox();closeGreyground();" class="btn btn-default-a">Confirm</button>
+              <button type="button" (click)="closeGreyground();closeUpdateBox();" class="btn btn-default-a">Cancel</button>
+          </div>
+          <div class="delete-box" id="deletebox">
+              <label for="labelForm" style="font-size: 2rem; margin: 0px auto;">Delete event {{events[eventTempId].Team1.Name}} vs {{events[eventTempId].Team2.Name}}</label>
+              <button type="button" (click)="deleteEvent();closeGreyground();closeDeleteBox();refreshPage();" class="btn btn-default-a">Confirm</button>
+              <button type="button" (click)="closeGreyground();closeDeleteBox();" class="btn btn-default-a">Cancel</button>
+          </div>
+          </div>
+          <button *ngIf="userService.roleMatch(['Editor'])" (click)="openGreyground();openAddBox();" style="position:fixed; top:580px; left: 1200px;" id="addButton" class="btn btn-default">Add event</button>
+          <span (click)="searchInfo()" style="z-index: 0" class="magnifier">🔍</span>
+</body>
