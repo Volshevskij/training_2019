@@ -7,6 +7,8 @@ namespace DataAccessLayer.Helpers
     {
         SqlParameter CreateParameter(string name, object value, DbType dbType);
         string GetConnectionString();
+        bool CheckConnection();
+        void GenerateDataBase();
 
         void Delete(string commandText, CommandType commandType, SqlParameter[] sqlParameters = null);
         void Create(string commandText, CommandType commandType, SqlParameter[] sqlParameters = null);
